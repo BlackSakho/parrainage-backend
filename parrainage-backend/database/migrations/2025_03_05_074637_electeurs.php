@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('Electeurtemps', function (Blueprint $table) {
+        Schema::create('Electeurs', function (Blueprint $table) {
             $table->id();
             $table->string('NumeroCarteElecteur')->unique();
             $table->string('CIN')->unique();
@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('Prenom');
             $table->date('DateNaissance');
             $table->string('BureauVote');
-            $table->string('Commune');
             $table->string('LieuDeNaissance');
-            $table->string('Sexe');
+            $table->enum('Sexe',['Feminin', 'Masculin']);
+            $table->string('Commune');
             $table->unsignedBigInteger('IDFichier'); // ✅ Doit correspondre au type de id de FichierElectoral
             $table->timestamps();
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ElecteurTemps');
+        //
     }
 };

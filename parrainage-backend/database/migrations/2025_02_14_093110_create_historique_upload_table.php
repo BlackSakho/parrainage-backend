@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('HistoriqueUpload', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('UtilisateurID'); // ID de l'utilisateur
-            $table->string('AdresseIP'); // IP de l'utilisateur
-            $table->timestamp('DateUpload')->useCurrent(); // Date de l'upload
-            $table->string('ClefUtilisee'); // Valeur de la clé utilisée
+            $table->unsignedBigInteger('UtilisateurID');
+            $table->string('AdresseIP');
+            $table->timestamp('DateUpload')->useCurrent();
+            $table->string('ClefUtilisee'); 
             $table->timestamps();
 
             $table->foreign('UtilisateurID')->references('id')->on('users')->onDelete('CASCADE');
